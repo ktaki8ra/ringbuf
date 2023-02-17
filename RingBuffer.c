@@ -43,6 +43,7 @@ void PushRing(FixedSizeRingBuffer *ring, uint32_t value) {
 uint32_t PopRing(FixedSizeRingBuffer *ring) {
 	if(ring->wp == 0 && ring->rp == 0) {
 		printf("[Force Quit] Couldn't Pop because Ring Buffer is EMPTY...\n");
+                DelRing(ring);
 		exit(1);
 	}
 	uint32_t value = ring->buffer[ring->rp];
